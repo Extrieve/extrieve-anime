@@ -44,7 +44,6 @@ public class AnimeServiceImpl implements AnimeService {
 
     @Override
     public Anime saveAnime(Anime anime) {
-        logger.info("Saving anime with title: " + anime.getAnimeTitle());
         return animeRepo.save(anime);
     }
 }

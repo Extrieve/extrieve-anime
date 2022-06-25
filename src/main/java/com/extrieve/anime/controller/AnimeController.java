@@ -3,35 +3,33 @@ package com.extrieve.anime.controller;
 import com.extrieve.anime.entity.Anime;
 import com.extrieve.anime.exception.ResourceNotFoundException;
 import com.extrieve.anime.service.AnimeServiceImpl;
-import org.slf4j.Logger;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
 @RestController
+@Slf4j
 @RequestMapping("/api/v1/")
 public class AnimeController {
 
     @Autowired
     private AnimeServiceImpl animeService;
 
-    Logger logger;
-
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/all")
     public ResponseEntity<Collection<Anime>> getAllAnime(){
-        logger.info("Fetching all anime");
+        log.info("Getting all anime");
         Collection<Anime> allAnime = animeService.getAll();
         return ResponseEntity.ok(allAnime);
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/anime/{id}")
     public ResponseEntity<Anime> getAnimeById(@PathVariable String id){
-        logger.info("Fetching anime by ID");
+        log.info("Fetching anime by ID");
         try {
         Anime anime = animeService.findByAnimeId(id);
         return ResponseEntity.ok(anime);
@@ -39,5 +37,12 @@ public class AnimeController {
             throw new ResourceNotFoundException("Anime with id:" + id + " not found.");
         }
 
+    }
+
+    @CrossOrigin("http://localhost:4200")
+    @PostMapping("/save")
+    public ResponseEntity<Anime> saveAnime(@RequestBody Anime anime){
+        log.info("Saving anime with title: " + anime.getAnimeTitle());
+        return ResponseEntity.ok(animeService.saveAnime(anime));
     }
 }
