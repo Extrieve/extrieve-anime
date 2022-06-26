@@ -13,13 +13,14 @@ import java.util.Collection;
 @RestController
 @Slf4j
 @RequestMapping("/api/v1/")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AnimeController {
 
     @Autowired
     private AnimeServiceImpl animeService;
 
     @CrossOrigin("http://localhost:4200")
-    @GetMapping("/all")
+    @GetMapping("/anime")
     public ResponseEntity<Collection<Anime>> getAllAnime(){
         log.info("Getting all anime");
         Collection<Anime> allAnime = animeService.getAll();
