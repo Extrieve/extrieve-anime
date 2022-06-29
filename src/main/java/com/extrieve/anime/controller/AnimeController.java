@@ -46,4 +46,12 @@ public class AnimeController {
         log.info("Saving anime with title: " + anime.getAnimeTitle());
         return ResponseEntity.ok(animeService.saveAnime(anime));
     }
+
+    @CrossOrigin("http://localhost:4200")
+    @GetMapping("/anime/{name}")
+    public ResponseEntity<Collection<Anime>> getAnimeByName(String animeName){
+        log.info("Fetching anime by name");
+        Collection<Anime> anime = animeService.findAnimeByName(animeName);
+        return ResponseEntity.ok(anime);
+    }
 }

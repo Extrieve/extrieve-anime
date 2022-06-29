@@ -27,7 +27,7 @@ public class AnimeServiceImpl implements AnimeService {
     }
 
     @Override
-    public Collection<Anime> getAnimeByName(String name) {
+    public Collection<Anime> findAnimeByName(String name) {
         return animeRepo.findByAnimeTitle(name);
     }
 

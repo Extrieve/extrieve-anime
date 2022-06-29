@@ -12,7 +12,7 @@ public interface AnimeService {
 
     public Collection<Anime> getAnimeByNameIgnoreCase(String name);
 
-    public Collection<Anime> getAnimeByName(String name);
+    public Collection<Anime> findAnimeByName(String name);
 
     public Collection<Anime> getAnimeByAnimeNameAndAnimeType (String name, String type);
 
