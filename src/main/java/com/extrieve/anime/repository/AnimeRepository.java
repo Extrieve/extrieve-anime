@@ -9,7 +9,7 @@ import java.util.Collection;
 @Repository
 public interface AnimeRepository extends JpaRepository<Anime, Long> {
 
-    public Anime findByAnimeId(String animeId);
+    public Anime findByAnimeId(Long animeId);
 
     public Collection<Anime> findByAnimeTitle(String animeTitle);
 

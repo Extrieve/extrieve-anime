@@ -22,7 +22,7 @@ public class AnimeServiceImpl implements AnimeService {
     }
 
     @Override
-    public Anime findByAnimeId(String id) {
+    public Anime findByAnimeId(Long id) {
         return animeRepo.findByAnimeId(id);
     }
 
