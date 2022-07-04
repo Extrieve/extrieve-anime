@@ -18,13 +18,13 @@ public class Anime {
 
     @Id
     @SequenceGenerator(
-            name = "student_sequence",
-            sequenceName = "student_sequence",
+            name = "anime_sequence",
+            sequenceName = "anime_sequence",
             allocationSize = 1
     )
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
-            generator = "student_sequence"
+            generator = "anime_sequence"
     )
     private Long animeId;
 
