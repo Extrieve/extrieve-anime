@@ -29,7 +29,7 @@ public class AnimeController {
 
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/anime/{id}")
-    public ResponseEntity<Anime> getAnimeById(@PathVariable String id){
+    public ResponseEntity<Anime> getAnimeById(@PathVariable Long id){
         log.info("Fetching anime by ID");
         try {
         Anime anime = animeService.findByAnimeId(id);
