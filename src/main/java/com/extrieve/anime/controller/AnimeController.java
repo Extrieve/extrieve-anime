@@ -33,7 +33,7 @@ public class AnimeController {
         log.info("Fetching anime by ID");
         try {
         Anime anime = animeService.findByAnimeId(id);
-        return ResponseEntity.ok(anime);
+        return ResponseEntity.ok.body(anime);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException("Anime with id:" + id + " not found.");
         }
