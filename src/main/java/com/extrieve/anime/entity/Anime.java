@@ -34,6 +34,7 @@ public class Anime {
     @Column(name = "anime_type")
     private String animeType;
 
+    @Lob
     @Column(name = "anime_description")
     private String animeDescription;
 
