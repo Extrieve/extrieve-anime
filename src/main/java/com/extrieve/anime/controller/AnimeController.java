@@ -32,8 +32,8 @@ public class AnimeController {
     public ResponseEntity<Anime> getAnimeById(@PathVariable Long id){
         log.info("Fetching anime by ID");
         try {
-        Anime anime = animeService.findByAnimeId(id);
-        return ResponseEntity.ok().body(anime);
+            Anime anime = animeService.findByAnimeId(id);
+            return ResponseEntity.ok().body(anime);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException("Anime with id:" + id + " not found.");
         }
@@ -51,7 +51,7 @@ public class AnimeController {
     @GetMapping("/search/{name}")
     public ResponseEntity<Collection<Anime>> getAnimeByName(String animeName){
         log.info("Fetching anime by name");
-        Collection<Anime> anime = animeService.findAnimeByName(animeName);
+        Collection<Anime> anime = animeService.findByAnimeTitleIgnoreCase(animeName);
         return ResponseEntity.ok(anime);
     }
 }

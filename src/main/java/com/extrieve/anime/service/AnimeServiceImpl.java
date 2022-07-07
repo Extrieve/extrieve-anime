@@ -11,6 +11,8 @@ import java.util.Collection;
 @Service
 public class AnimeServiceImpl implements AnimeService {
 
+    // TODO: Change return types to ResponseEntity
+
     @Autowired
     AnimeRepository animeRepo;
 
@@ -27,13 +29,13 @@ public class AnimeServiceImpl implements AnimeService {
     }
 
     @Override
-    public Collection<Anime> findAnimeByName(String name) {
-        return animeRepo.findByAnimeTitle(name);
+    public Collection<Anime> findByAnimeTitleIgnoreCase(String name) {
+        return animeRepo.findByAnimeTitleIgnoreCase(name);
     }
 
     @Override
-    public Collection<Anime> getAnimeByNameIgnoreCase(String name) {
-        return null;
+    public Collection<Anime> findAnimeByName(String name) {
+        return animeRepo.findByAnimeTitle(name);
     }
 
 

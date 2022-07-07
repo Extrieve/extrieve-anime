@@ -10,7 +10,7 @@ public interface AnimeService {
 
     public Anime findByAnimeId(Long id);
 
-    public Collection<Anime> getAnimeByNameIgnoreCase(String name);
+    public Collection<Anime> findByAnimeTitleIgnoreCase(String name);
 
     public Collection<Anime> findAnimeByName(String name);
 
