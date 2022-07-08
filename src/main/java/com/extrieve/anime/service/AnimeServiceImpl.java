@@ -4,6 +4,7 @@ import com.extrieve.anime.entity.Anime;
 import com.extrieve.anime.repository.AnimeRepository;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -18,33 +19,33 @@ public class AnimeServiceImpl implements AnimeService {
 
     Logger logger;
 
-    @Override
-    public Collection<Anime> getAll() {
-        return animeRepo.findAll();
+
+    public ResponseEntity<Collection<Anime>> getAll() {
+        return ResponseEntity.ok(animeRepo.findAll());
     }
 
-    @Override
-    public Anime findByAnimeId(Long id) {
-        return animeRepo.findByAnimeId(id);
+
+    public ResponseEntity<Anime> findByAnimeId(Long id) {
+        return ResponseEntity.ok().body(animeRepo.findByAnimeId(id));
     }
 
-    @Override
+
     public Collection<Anime> findByAnimeTitleIgnoreCase(String name) {
         return animeRepo.findByAnimeTitleIgnoreCase(name);
     }
 
-    @Override
+
     public Collection<Anime> findAnimeByName(String name) {
         return animeRepo.findByAnimeTitle(name);
     }
 
 
-    @Override
+
     public Collection<Anime> getAnimeByAnimeNameAndAnimeType (String name, String type) {
         return null;
     }
 
-    @Override
+
     public Anime saveAnime(Anime anime) {
         return animeRepo.save(anime);
     }

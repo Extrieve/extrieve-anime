@@ -23,8 +23,7 @@ public class AnimeController {
     @GetMapping("/anime")
     public ResponseEntity<Collection<Anime>> getAllAnime(){
         log.info("Getting all anime");
-        Collection<Anime> allAnime = animeService.getAll();
-        return ResponseEntity.ok(allAnime);
+        return animeService.getAll();
     }
 
     @CrossOrigin("http://localhost:4200")
@@ -32,8 +31,7 @@ public class AnimeController {
     public ResponseEntity<Anime> getAnimeById(@PathVariable Long id){
         log.info("Fetching anime by ID");
         try {
-            Anime anime = animeService.findByAnimeId(id);
-            return ResponseEntity.ok().body(anime);
+            return this.animeService.findByAnimeId(id);
         } catch (ResourceNotFoundException e) {
             throw new ResourceNotFoundException("Anime with id:" + id + " not found.");
         }
