@@ -42,14 +42,13 @@ public class AnimeController {
     @PostMapping("/save")
     public ResponseEntity<Anime> saveAnime(@RequestBody Anime anime){
         log.info("Saving anime with title: " + anime.getAnimeTitle());
-        return ResponseEntity.ok(animeService.saveAnime(anime));
+        return animeService.saveAnime(anime);
     }
 
     @CrossOrigin("http://localhost:4200")
     @GetMapping("/search/{name}")
     public ResponseEntity<Collection<Anime>> getAnimeByName(String animeName){
         log.info("Fetching anime by name");
-        Collection<Anime> anime = animeService.findByAnimeTitleIgnoreCase(animeName);
-        return ResponseEntity.ok(anime);
+        return animeService.findByAnimeTitleIgnoreCase(animeName);
     }
 }

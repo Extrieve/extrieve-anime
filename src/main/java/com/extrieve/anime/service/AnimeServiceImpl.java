@@ -30,13 +30,13 @@ public class AnimeServiceImpl implements AnimeService {
     }
 
 
-    public Collection<Anime> findByAnimeTitleIgnoreCase(String name) {
-        return animeRepo.findByAnimeTitleIgnoreCase(name);
+    public ResponseEntity<Collection<Anime>> findByAnimeTitleIgnoreCase(String name) {
+        return ResponseEntity.ok(animeRepo.findByAnimeTitleIgnoreCase(name));
     }
 
 
-    public Collection<Anime> findAnimeByName(String name) {
-        return animeRepo.findByAnimeTitle(name);
+    public ResponseEntity<Collection<Anime>> findAnimeByName(String name) {
+        return ResponseEntity.ok(animeRepo.findByAnimeTitle(name));
     }
 
 
@@ -46,7 +46,7 @@ public class AnimeServiceImpl implements AnimeService {
     }
 
 
-    public Anime saveAnime(Anime anime) {
-        return animeRepo.save(anime);
+    public ResponseEntity<Anime> saveAnime(Anime anime) {
+        return ResponseEntity.ok().body(animeRepo.save(anime));
     }
 }
