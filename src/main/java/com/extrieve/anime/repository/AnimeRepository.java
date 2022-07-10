@@ -12,6 +12,8 @@ public interface AnimeRepository extends JpaRepository<Anime, Long> {
     public Anime findByAnimeId(Long animeId);
 
     public Collection<Anime> findByAnimeTitle(String animeTitle);
+    
+    public Collection<Anime> findByAnimeTitleContaining(String animeTitle);
 
     public Collection<Anime> findByAnimeTitleIgnoreCase(String animeTitle);
 

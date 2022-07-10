@@ -46,9 +46,9 @@ public class AnimeController {
     }
 
     @CrossOrigin("http://localhost:4200")
-    @GetMapping("/search/{name}")
-    public ResponseEntity<Collection<Anime>> getAnimeByName(String animeName){
-        log.info("Fetching anime by name");
-        return animeService.findByAnimeTitleIgnoreCase(animeName);
+    @GetMapping("/search/{animeName}")
+    public ResponseEntity<Collection<Anime>> getAnimeByName(@PathVariable String animeName){
+        log.info("Fetching anime with name: " + animeName);
+        return animeService.findAnimeByName(animeName);
     }
 }

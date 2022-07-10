@@ -36,13 +36,7 @@ public class AnimeServiceImpl implements AnimeService {
 
 
     public ResponseEntity<Collection<Anime>> findAnimeByName(String name) {
-        return ResponseEntity.ok(animeRepo.findByAnimeTitle(name));
-    }
-
-
-
-    public Collection<Anime> getAnimeByAnimeNameAndAnimeType (String name, String type) {
-        return null;
+        return ResponseEntity.ok(animeRepo.findByAnimeTitleContaining(name));
     }
 
 
