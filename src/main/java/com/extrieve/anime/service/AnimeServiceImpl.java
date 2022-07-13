@@ -17,30 +17,36 @@ public class AnimeServiceImpl implements AnimeService {
     @Autowired
     AnimeRepository animeRepo;
 
+    @Autowired
     Logger logger;
 
 
     public ResponseEntity<Collection<Anime>> getAll() {
+        logger.info("Fetching all anime");
         return ResponseEntity.ok(animeRepo.findAll());
     }
 
 
     public ResponseEntity<Anime> findByAnimeId(Long id) {
+        logger.info("Fetching anime with ID: " + id);
         return ResponseEntity.ok().body(animeRepo.findByAnimeId(id));
     }
 
 
     public ResponseEntity<Collection<Anime>> findByAnimeTitleIgnoreCase(String name) {
+        logger.info("Fetching anime with name " + name);
         return ResponseEntity.ok(animeRepo.findByAnimeTitleIgnoreCase(name));
     }
 
 
     public ResponseEntity<Collection<Anime>> findAnimeByName(String name) {
+        logger.info("Fetching anime with name " + name);
         return ResponseEntity.ok(animeRepo.findByAnimeTitleContaining(name));
     }
 
 
     public ResponseEntity<Anime> saveAnime(Anime anime) {
+        logger.info("Saving anime with title: " + anime.getAnimeTitle());
         return ResponseEntity.ok().body(animeRepo.save(anime));
     }
 }
