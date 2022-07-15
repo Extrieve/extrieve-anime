@@ -2,7 +2,9 @@ package com.extrieve.anime.service;
 
 import com.extrieve.anime.entity.Anime;
 import com.extrieve.anime.repository.AnimeRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 
 @Service
+//@Slf4j
 public class AnimeServiceImpl implements AnimeService {
 
     // TODO: Change return types to ResponseEntity
@@ -17,8 +20,8 @@ public class AnimeServiceImpl implements AnimeService {
     @Autowired
     AnimeRepository animeRepo;
 
-    @Autowired
-    Logger logger;
+//    @Autowired
+    private final Logger logger = LoggerFactory.getLogger(AnimeServiceImpl.class);
 
 
     public ResponseEntity<Collection<Anime>> getAll() {
