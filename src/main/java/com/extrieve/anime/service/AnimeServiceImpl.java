@@ -32,19 +32,44 @@ public class AnimeServiceImpl implements AnimeService {
 
     public ResponseEntity<Anime> findByAnimeId(Long id) {
         logger.info("Fetching anime with ID: " + id);
-        return ResponseEntity.ok().body(animeRepo.findByAnimeId(id));
+        try {
+            return ResponseEntity.ok().body(animeRepo.findByAnimeId(id));
+        } catch (RuntimeException e) {
+            throw new RuntimeException("Anime with id:" + id + " not found.");
+        }
     }
 
 
     public ResponseEntity<Collection<Anime>> findByAnimeTitleIgnoreCase(String name) {
         logger.info("Fetching anime with name " + name);
-        return ResponseEntity.ok(animeRepo.findByAnimeTitleIgnoreCase(name));
+
+        if (name == null) {
+            throw new RuntimeException("Anime name cannot be null");
+        }
+        Collection<Anime> payload = animeRepo.findByAnimeTitleIgnoreCase(name);
+
+        if (payload.size() == 0) {
+            logger.warn("Anime with name " + name + " not found.");
+        }
+
+        return ResponseEntity.ok(payload);
     }
 
 
     public ResponseEntity<Collection<Anime>> findAnimeByName(String name) {
         logger.info("Fetching anime with name " + name);
-        return ResponseEntity.ok(animeRepo.findByAnimeTitleContaining(name));
+
+        if (name == null) {
+            throw new RuntimeException("Anime name cannot be null");
+        }
+
+        Collection<Anime> payload = animeRepo.findByAnimeTitleContaining(name);
+
+        if (payload.size() == 0) {
+            logger.warn("Anime with name " + name + " not found.");
+        }
+
+        return ResponseEntity.ok(payload);
     }
 
 
